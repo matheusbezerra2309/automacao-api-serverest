@@ -40,5 +40,5 @@ jobs:
         with:
           name: relatorio-cypress-${{ github.run_number }}
           path: |
-            cypress/reports/html
+            cypress/reports/results.html/full-report.html
           retention-days: 1

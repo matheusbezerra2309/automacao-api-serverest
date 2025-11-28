@@ -1,12 +1,9 @@
-# .github/workflows/main.yml
-name: Cypress Tests
+# .github/workflows/cypress.yml
+name: Cypress + Relatório
 
-# Roda automaticamente em todo push e pull request
 on:
   push:
   pull_request:
-
-# Roda manualmente pelo botão "Run workflow" no GitHub
   workflow_dispatch:
 
 jobs:
@@ -21,31 +18,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Instala dependências
         run: npm ci
 
-      - name: Roda todos os testes Cypress
-        run: npx cypress run
-
       - name: Instala Mochawesome
         run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
 
-      - name: Roda os testes e já gera relatório JSON
-        run: npx cypress run --reporter mochawesome
+      - name: Roda Cypress com relatório
+        run: npx cypress run --reporter mochawesome/src/mochawesome
 
-      - name: Gera relatório HTML bonito
-        if: always()  # roda mesmo se os testes falharem
+      - name: Gera relatório HTML
+        if: always()
         run: |
-          npx mochawesome-merge "cypress/reports/mochawesome/*.json" > mochawesome.json
-          npx marge mochawesome.json --reportDir mochawesome-report --inline
+          npx mochawesome-merge "cypress/reports/mochawesome/*.json" > cypress/reports/full-report.json
+          npx marge cypress/reports/full-report.json --reportDir cypress/reports/results.html --inline --charts
 
-      - name: Upload Relatório HTML + Vídeos + Screenshots
+      - name: Upload do relatório completo
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-relatorio-${{ github.run_number }}
+          name: relatorio-cypress-${{ github.run_number }}
           path: |
-            mochawesome-report/
-          retention-days: 2
+            cypress/reports/html
+          retention-days: 1

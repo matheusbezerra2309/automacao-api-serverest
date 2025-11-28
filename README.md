@@ -12,7 +12,7 @@ Todos os testes, tratamento dos dados utilizados e integração com CI/CD.
 - Validação de todos os cenários negativos (400, 401, e-mail duplicado, ID inexistente, etc.)
 - Geração automática de e-mail único
 - Relatórios Mochawesome HTML + JSON
-- Pipeline GitHub Actions com execução paralela e cache
+- Pipeline GitHub Actions
 
 ### Estrutura do projeto
 
@@ -32,7 +32,7 @@ Todos os testes, tratamento dos dados utilizados e integração com CI/CD.
 git clone https://github.com/matheusbezerra2309/automacao-api-serverest.git
 
 # 2. Instale as dependências
-npm ci
+npm install
 
 # 4. Rode todos os testes em modo headless
 npx cypress run

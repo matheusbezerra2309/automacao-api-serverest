@@ -1,1 +1,51 @@
+# .github/workflows/main.yml
+name: Cypress Tests
 
+# Roda automaticamente em todo push e pull request
+on:
+  push:
+  pull_request:
+
+# Roda manualmente pelo botão "Run workflow" no GitHub
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instala dependências
+        run: npm ci
+
+      - name: Roda todos os testes Cypress
+        run: npx cypress run
+
+      - name: Instala Mochawesome
+        run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+
+      - name: Roda os testes e já gera relatório JSON
+        run: npx cypress run --reporter mochawesome
+
+      - name: Gera relatório HTML bonito
+        if: always()  # roda mesmo se os testes falharem
+        run: |
+          npx mochawesome-merge "cypress/reports/mochawesome/*.json" > mochawesome.json
+          npx marge mochawesome.json --reportDir mochawesome-report --inline
+
+      - name: Upload Relatório HTML + Vídeos + Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-relatorio-${{ github.run_number }}
+          path: |
+            mochawesome-report/
+          retention-days: 2

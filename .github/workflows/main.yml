@@ -20,7 +20,7 @@ jobs:
           node-version: 20
 
       - name: Instala dependências
-        run: npm ci
+        run: npm install
 
       - name: Instala Mochawesome
         run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator

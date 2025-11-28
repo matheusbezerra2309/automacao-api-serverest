@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+cypress/videos/
+cypress/screenshots/
+cypress/reports/
+cypress/results/
+
+coverage/
+.nyc_output/
+
+cypress.env.json
+cypress.json            
+
+# Logs e temporários
+*.log
+.tmp/
+.temp/
+.DS_Store
+Thumbs.db
+
+# IDEs e editores
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Variáveis de ambiente (nunca commitar senhas/tokens)
+.env
+.env.local
+.env.*.local
+
+*.zip
+*.tar.gz
+*.7z
+

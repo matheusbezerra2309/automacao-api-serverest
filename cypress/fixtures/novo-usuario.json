@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "nome": "Beltrano Automatizado",
+    "email": "beltrano_{{random}}@qa.com.br",
+    "password": "teste",
+    "administrador": "true"
+  },
+  "comum": {
+    "nome": "Ciclano Comum",
+    "email": "ciclano_{{random}}@qa.com.br",
+    "password": "123456",
+    "administrador": "false"
+  }
+}

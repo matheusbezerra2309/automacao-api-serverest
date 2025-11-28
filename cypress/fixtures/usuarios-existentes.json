@@ -1,0 +1,29 @@
+{
+  "administradorExistente": {
+    "nome": "Fulano da Silva",
+    "email": "fulano@qa.com",
+    "password": "teste",
+    "administrador": "true",
+    "_id": "0uxuPY0cbmQhpEz1"
+  },
+  "outroAdmin": {
+    "nome": "Beltrano Admin",
+    "email": "beltrano_@qa.com.br",
+    "password": "teste",
+    "administrador": "true",
+    "_id": "KXqmg9g3wE123abc"
+  },
+  "DadosInvalidos": {
+    "nome": " Usuario Invalido",
+    "email": "invalidemail",
+    "password": "123",
+    "administrador": "false",
+    "_id": "44444444444444444444444444444444444444"
+  },
+  "dadosAtualizar": {
+    "nome": "Fulano da Silva – Atualizado",
+    "email": "fulano.atualizado@qa.com",
+    "password": "novasenha123",
+    "administrador": "true"
+  }
+}
